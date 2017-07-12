@@ -27,14 +27,6 @@ module Spaceship
       #   'IPHONE'
       attr_accessor :device_class
 
-      # @return (String) Device type
-      # @example
-      #   'watch'  - Apple Watch
-      #   'ipad'   - iPad
-      #   'iphone' - iPhone
-      #   'ipod'   - iPod
-      #   'tvOS'   - Apple TV
-      attr_accessor :device_type
 
       attr_mapping({
         'benefitId' => :id,
@@ -47,37 +39,37 @@ module Spaceship
       class << self
         # @return (Array) Returns all device benefits registered for this account
         def all()
-          client.device_benefits().map { |device_benefit| self.factory(device_benefit) }
+          client.device_benefits.map { |device_benefit| self.factory(device_benefit) }
         end
 
         # @return (DeviceBenefit) Returns Apple TV benefits information for this account        
-        def apple_tvs(candidates = all)
-          candidates.first{ |benefit| benefit.device_class == "AppleTV" }
+        def apple_tv(candidates = all)
+          Array(candidates).first{ |benefit| benefit.device_class == "AppleTV" }
         end
 
         # @return (DeviceBenefit) Returns Apple Qatch benefits information for this account
-        def watches(candidates = all)
-          candidates.first{ |benefit| benefit.device_class == "WATCH" }
+        def watch(candidates = all)
+          Array(candidates).first{ |benefit| benefit.device_class == "WATCH" }
         end
 
         # @return (DeviceBenefit) Returns iPad benefits information for this account
-        def ipads(candidates = all)
-          candidates.first{ |benefit| benefit.device_class == "IPAD" }
+        def ipad(candidates = all)
+          Array(candidates).first{ |benefit| benefit.device_class == "IPAD" }
         end
 
         # @return (DeviceBenefit) Returns iPhone benefits information for this account
-        def iphones(candidates = all)
-          candidates.first{ |benefit| benefit.device_class == "IPHONE" }
+        def iphone(candidates = all)
+          Array(candidates).first{ |benefit| benefit.device_class == "IPHONE" }
         end
 
         # @return (DeviceBenefit) Returns iPod benefits information for this account
-        def ipod_touches(candidates = all)
-          candidates.first{ |benefit| benefit.device_class == "IPOD" }
+        def ipod_touch(candidates = all)
+          Array(candidates).first{ |benefit| benefit.device_class == "IPOD" }
         end
 
         # @return (Array<DeviceBenefit>) Returns all device benefits that support iOS profiles (all devices except TVs)
         def all_ios_profile_devices(candidates = all)
-          candidates.reject { |device| device.device_type == "AppleTV" }
+          Array(candidates).reject { |device| device.device_type == "AppleTV" }
         end
       end
 

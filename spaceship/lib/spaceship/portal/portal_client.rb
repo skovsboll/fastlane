@@ -346,6 +346,18 @@ module Spaceship
       end
     end
 
+    def device_benefits()
+      r = request(:post, "account/#{platform_slug(mac)}/device/listDevices.action", {
+        teamId: team_id,
+        pageNumber: 1,
+        pageSize: 1,
+        sort: 'name=asc',
+        includeRemovedDevices: false,
+        includeAvailability: true
+      })
+      parse_response(r, 'deviceBenefits')
+    end
+
     def devices_by_class(device_class, include_disabled: false)
       paging do |page_number|
         r = request(:post, 'account/ios/device/listDevices.action', {

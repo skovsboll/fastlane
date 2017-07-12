@@ -20,6 +20,7 @@ module Spaceship
   Certificate = Spaceship::Portal::Certificate
   ProvisioningProfile = Spaceship::Portal::ProvisioningProfile
   Device = Spaceship::Portal::Device
+  DeviceBenefit = Spaceship::Portal::DeviceBenefit
   App = Spaceship::Portal::App
   AppGroup = Spaceship::Portal::AppGroup
   WebsitePush = Spaceship::Portal::WebsitePush

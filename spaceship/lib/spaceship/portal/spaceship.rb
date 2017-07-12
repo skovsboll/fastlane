@@ -64,6 +64,11 @@ module Spaceship
         Spaceship::Device.set_client(@client)
       end
 
+      # @return (Class) Access the devices for the spaceship
+      def device_benefit
+        Spaceship::DeviceBenefit.set_client(@client)
+      end
+
       # @return (Class) Access the certificates for the spaceship
       def certificate
         Spaceship::Certificate.set_client(@client)

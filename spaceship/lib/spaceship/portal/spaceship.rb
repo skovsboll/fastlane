@@ -106,6 +106,10 @@ module Spaceship
       Spaceship::Portal.device
     end
 
+    def device_benefit
+      Spaceship::Portal.device_benefit
+    end
+
     def certificate
       Spaceship::Portal.certificate
     end

@@ -82,7 +82,7 @@ module Spaceship
     end
 
     # @return (Class) Access the device benefits for this spaceship
-    def device_benefits
+    def device_benefit
         Spaceship::DeviceBenefit.set_client(@client)
     end
 

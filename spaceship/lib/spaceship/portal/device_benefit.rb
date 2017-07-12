@@ -43,31 +43,37 @@ module Spaceship
         end
 
         # @return (DeviceBenefit) Returns Apple TV benefits information for this account        
+        # @param candidates (Array<DeviceBenefit>) searches through a list that was previously retrieved from Apple 
         def apple_tv(candidates = all)
-          Array(candidates).first{ |benefit| benefit.device_class == "AppleTV" }
+          Array(candidates).select{ |benefit| benefit.device_class == "AppleTV" }.first
         end
 
         # @return (DeviceBenefit) Returns Apple Qatch benefits information for this account
+        # @param candidates (Array<DeviceBenefit>) searches through a list that was previously retrieved from Apple 
         def watch(candidates = all)
-          Array(candidates).first{ |benefit| benefit.device_class == "WATCH" }
+          Array(candidates).select{ |benefit| benefit.device_class == "WATCH" }.first
         end
 
         # @return (DeviceBenefit) Returns iPad benefits information for this account
+        # @param candidates (Array<DeviceBenefit>) searches through a list that was previously retrieved from Apple 
         def ipad(candidates = all)
-          Array(candidates).first{ |benefit| benefit.device_class == "IPAD" }
+          Array(candidates).select{ |benefit| benefit.device_class == "IPAD" }.first
         end
 
         # @return (DeviceBenefit) Returns iPhone benefits information for this account
+        # @param candidates (Array<DeviceBenefit>) searches through a list that was previously retrieved from Apple 
         def iphone(candidates = all)
-          Array(candidates).first{ |benefit| benefit.device_class == "IPHONE" }
+          Array(candidates).select{ |benefit| benefit.device_class == "IPHONE" }.first
         end
 
         # @return (DeviceBenefit) Returns iPod benefits information for this account
+        # @param candidates (Array<DeviceBenefit>) searches through a list that was previously retrieved from Apple 
         def ipod_touch(candidates = all)
-          Array(candidates).first{ |benefit| benefit.device_class == "IPOD" }
+          Array(candidates).select{ |benefit| benefit.device_class == "IPOD" }.first
         end
 
         # @return (Array<DeviceBenefit>) Returns all device benefits that support iOS profiles (all devices except TVs)
+        # @param candidates (Array<DeviceBenefit>) searches through a list that was previously retrieved from Apple 
         def all_ios_profile_devices(candidates = all)
           Array(candidates).reject { |device| device.device_type == "AppleTV" }
         end

@@ -347,7 +347,7 @@ module Spaceship
     end
 
     def device_benefits()
-      r = request(:post, "account/#{platform_slug(mac)}/device/listDevices.action", {
+      r = request(:post, "account/ios/device/listDevices.action", {
         teamId: team_id,
         pageNumber: 1,
         pageSize: 1,

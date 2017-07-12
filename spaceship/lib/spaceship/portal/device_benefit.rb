@@ -50,34 +50,34 @@ module Spaceship
           client.device_benefits().map { |device_benefit| self.factory(device_benefit) }
         end
 
-        # @return (DeviceBenefit) Returns Apple TV benefits information for this account
-        def apple_tvs
-          all.first{ |benefit| benefit.device_class == "AppleTV" }
+        # @return (DeviceBenefit) Returns Apple TV benefits information for this account        
+        def apple_tvs(candidates = all)
+          candidates.first{ |benefit| benefit.device_class == "AppleTV" }
         end
 
         # @return (DeviceBenefit) Returns Apple Qatch benefits information for this account
-        def watches
-          all.first{ |benefit| benefit.device_class == "WATCH" }
+        def watches(candidates = all)
+          candidates.first{ |benefit| benefit.device_class == "WATCH" }
         end
 
         # @return (DeviceBenefit) Returns iPad benefits information for this account
-        def ipads
-          all.first{ |benefit| benefit.device_class == "IPAD" }
+        def ipads(candidates = all)
+          candidates.first{ |benefit| benefit.device_class == "IPAD" }
         end
 
         # @return (DeviceBenefit) Returns iPhone benefits information for this account
-        def iphones
-          all.first{ |benefit| benefit.device_class == "IPHONE" }
+        def iphones(candidates = all)
+          candidates.first{ |benefit| benefit.device_class == "IPHONE" }
         end
 
         # @return (DeviceBenefit) Returns iPod benefits information for this account
-        def ipod_touches
-          all.first{ |benefit| benefit.device_class == "IPOD" }
+        def ipod_touches(candidates = all)
+          candidates.first{ |benefit| benefit.device_class == "IPOD" }
         end
 
         # @return (Array<DeviceBenefit>) Returns all device benefits that support iOS profiles (all devices except TVs)
-        def all_ios_profile_devices
-          all.reject { |device| device.device_type == "AppleTV" }
+        def all_ios_profile_devices(candidates = all)
+          candidates.reject { |device| device.device_type == "AppleTV" }
         end
       end
 

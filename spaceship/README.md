@@ -177,6 +177,7 @@ Overview of the used API endpoints
  - Repair provisioning profiles
  - Download provisioning profiles
  - Team selection
+ - List device benefits for the Apple subscriptiomn
 - `https://itunesconnect.apple.com`:
  - Managing apps
  - Managing beta testers

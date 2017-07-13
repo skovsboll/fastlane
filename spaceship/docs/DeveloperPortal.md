@@ -254,6 +254,42 @@ disabled_devices = Spaceship::Portal.device.all(include_disabled: true).select(&
 Spaceship::Portal.device.create!(name: "Private iPhone 6", udid: "5814abb3...")
 ```
 
+## Device benefits
+A device benefit is the information about how many devices you can register for a certain class of devices. For instance, with an individual Apple Developer subscription, the current limit is 100 iPhones, 100 iPads and so on. A device benefit also returns the number of devices you can register before you hit the limit.
+
+```ruby
+# List all device benefits
+Spaceship::Portal.device_benefit.all
+
+# Get device benefit for a single device class
+Spaceship::Portal.device_benefit.apple_tv
+Spaceship::Portal.device_benefit.ipod_touch
+Spaceship::Portal.device_benefit.ipad
+Spaceship::Portal.device_benefit.iphone
+Spaceship::Portal.device_benefit.watch
+
+# How many iPad slots left?
+Spaceship::Portal.device_benefit.ipad.available
+
+# What's the limit for watches?
+Spaceship::Portal.device_benefit.watch.max
+
+# Note, if you want to retrieve benefits for multiple, distinct classes,
+# you can do this with a single request like this:
+all_benefits = Spaceship::Portal.device_benefit.all
+
+ipads_available = Spaceship::Portal.device_benefit.ipad(all_benefits).available
+
+iphones_available = Spaceship::Portal.device_benefit.iphone(all_benefits).available
+
+# Check if all the slots have been used
+Spaceship::Portal.device_benefit.apple_tv.full?
+
+# Check if none of the slots have been used
+Spaceship::Portal.device_benefit.apple_tv.empty?
+
+```
+
 ## Enterprise
 
 ```ruby
